@@ -9,7 +9,16 @@ router.post('/users', async(req, res)=>{
         console.log(e)
         res.status(500).send()
     }
+}) 
+router.post('/login', async(req,res)=>{
+    const {email, password} = req.body;
+    try{
+        const user = await User.findByCredenials(username,password);
+        res.status(200).send(user)
+    } catch(e){
+        console.log(e);
+    }
 })
 
 
-module.exports = router
+module.exports = router 
