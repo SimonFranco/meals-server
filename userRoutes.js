@@ -12,11 +12,12 @@ router.post('/users', async(req, res)=>{
 }) 
 router.post('/login', async(req,res)=>{
     const {email, password} = req.body;
-    try{
-        const user = await User.findByCredenials(username,password);
+    try {
+        const user = await User.findByCredenials(email, password);
         res.status(200).send(user)
-    } catch(e){
+    } catch (e) {
         console.log(e);
+        res.status(500).send()
     }
 })
 
